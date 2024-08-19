@@ -1,27 +1,26 @@
 package com.misgu.miprueba;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+
 import android.widget.Button;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.misgu.miprueba.databinding.ActivityMainBinding;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
-    TextView tv_Nombre;
-    EditText et_Nombre;
-    Button btn_Borrar;
-    String Nom_Usu;
+    EditText editTextNombre,editTextApellido,editTextMail,editTextUser,editTextPass;
+    Button buttonDell,buttonConfirm;
+    int intCount;
+    String strNombre,strApellido,strMail,strUser,strPass;
     private ActivityMainBinding binding;
 
     @Override
@@ -29,17 +28,54 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        et_Nombre= (EditText) findViewById(R.id.EditTextNombre);
-        tv_Nombre= (TextView) findViewById(R.id.textViewNombre);
-        btn_Borrar= (Button) findViewById(R.id.buttonDel);
+        editTextNombre= (EditText) findViewById(R.id.editTextNombre);
+        editTextApellido= (EditText) findViewById(R.id.editTextApellido);
+        editTextMail= (EditText) findViewById(R.id.editTextMail);
+        editTextUser= (EditText) findViewById(R.id.editTextUser);
+        editTextPass= (EditText) findViewById(R.id.editTextPass);
+        buttonDell= (Button) findViewById(R.id.buttonDell);
+        buttonConfirm= (Button) findViewById(R.id.buttonConfirm);
 
-        btn_Borrar.setOnClickListener(new View.OnClickListener(){
+        //Funcion de borrado de datos de click
+        buttonDell.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                tv_Nombre.setText("Pulso el boton de borrar");
-                Nom_Usu=String.valueOf(et_Nombre.getText());
+                editTextNombre.setText("");
+                editTextApellido.setText("");
+                editTextMail.setText("");
+                editTextUser.setText("");
+                editTextPass.setText("");
+
             }});
+        buttonConfirm.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                strNombre=editTextNombre.getText().toString();
+                strApellido=editTextApellido.getText().toString();
+                strMail=editTextMail.getText().toString();
+                strUser=editTextUser.getText().toString();
+                strPass=editTextPass.getText().toString();
+                ShowAlertdialogue();
+                }
+            });
         // Passing each menu ID as a set of Ids because each
+    }
+
+    private void ShowAlertdialogue() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("Alerta");
+        builder.setMessage("Datos de usuario:\n"+strNombre+"\n"+strApellido+"\n"+strMail+"\n"+strUser+"\n"+strPass);
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(MainActivity.this, "Texto de ejemplo",Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+        AlertDialog alertDialog =builder.create();
+        alertDialog.show();
     }
 
 }

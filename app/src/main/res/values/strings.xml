@@ -7,8 +7,9 @@
     <string name="BotonBack">Borrar</string>
     <string name="ExampleLabel">Texto de ejemplo</string>
     <string name="LabelForm">Formulario</string>
-    <string name="Labeluser">Nombre</string>
-    <string name="Labeluser2">Apellido</string>
+    <string name="LabelName">Nombre</string>
+    <string name="LabelLastName">Apellido</string>
     <string name="LabelMail">Correo</string>
+    <string name="LabelUser">Usuario</string>
     <string name="LabelPass">Contraseña</string>
 </resources>
