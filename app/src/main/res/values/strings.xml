@@ -4,12 +4,14 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="BotonConfirm">Confirmar</string>
-    <string name="BotonBack">Borrar</string>
+    <string name="BotonDell">Borrar</string>
+    <string name="BotonBack">Atras</string>
     <string name="ExampleLabel">Texto de ejemplo</string>
-    <string name="LabelForm">Formulario</string>
+    <string name="LabelReg">Registro</string>
     <string name="LabelName">Nombre</string>
     <string name="LabelLastName">Apellido</string>
     <string name="LabelMail">Correo</string>
     <string name="LabelUser">Usuario</string>
     <string name="LabelPass">Contraseña</string>
+    <string name="LabelLogin">Login</string>
 </resources>

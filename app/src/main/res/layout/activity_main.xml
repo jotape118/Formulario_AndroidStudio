@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B82B2B"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,13 +16,11 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textViewFormulario"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:gravity="center"
             android:textColor="@color/black"
-            android:text="@string/LabelForm"
+            android:text="@string/LabelReg"
             android:textSize="30sp" />
         <View
             android:layout_width="wrap_content"
@@ -35,7 +33,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="573dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:background="@color/white"
@@ -129,6 +127,91 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:hint="@string/ExampleLabel" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewonCreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/ExampleLabel"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textViewonStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/ExampleLabel"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/textViewonResume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/ExampleLabel"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="right"
+            >
+
+            <TextView
+                android:id="@+id/textViewonStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/ExampleLabel"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textViewonRestart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/ExampleLabel"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textViewonPause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/ExampleLabel"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textViewonDestroy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/ExampleLabel"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -144,7 +227,7 @@
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:theme="@style/Theme.Miprueba"
-            android:text="@string/BotonBack"
+            android:text="@string/BotonDell"
             app:rippleColor="#681A1A" />
 
         <Button
@@ -153,6 +236,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
+            android:onClick="Login"
             android:text="@string/BotonConfirm"
             android:theme="@style/Theme.Miprueba"
             app:rippleColor="#2FB32A" />
