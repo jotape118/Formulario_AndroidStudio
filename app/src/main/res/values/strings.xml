@@ -10,8 +10,8 @@
     <string name="LabelReg">Registro</string>
     <string name="LabelName">Nombre</string>
     <string name="LabelLastName">Apellido</string>
-    <string name="LabelMail">Correo</string>
-    <string name="LabelUser">Usuario</string>
+    <string name="LabelNum">Numero</string>
+    <string name="LabelUser">Usuario</string>||
     <string name="LabelPass">Contraseña</string>
     <string name="LabelLogin">Login</string>
 </resources>

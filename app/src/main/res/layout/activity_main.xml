@@ -76,18 +76,18 @@
             android:hint="@string/ExampleLabel" />
 
         <TextView
-            android:id="@+id/textViewMail"
+            android:id="@+id/textViewNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="30dp"
             android:background="@color/white"
-            android:text="@string/LabelMail"
+            android:text="@string/LabelNum"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextMail"
+            android:id="@+id/editTextNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"

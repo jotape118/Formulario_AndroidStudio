@@ -77,7 +77,7 @@ public class LoginForm extends AppCompatActivity {
     public void AlertaLogin(String[] DB) {
         AlertDialog.Builder builder=new AlertDialog.Builder(LoginForm.this);
         builder.setTitle("Login exitoso");
-        builder.setMessage("Nombre: "+DB[2]+"\nApellido: "+DB[3]+"\nCorreo: "+DB[4]);
+        builder.setMessage("Nombre: "+DB[2]+"\nApellido: "+DB[3]+"\nNumero: "+DB[4]);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

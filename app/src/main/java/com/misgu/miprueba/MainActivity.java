@@ -20,10 +20,10 @@ import com.misgu.miprueba.databinding.ActivityMainBinding;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    EditText editTextNombre,editTextApellido,editTextMail,editTextUser,editTextPass;
+    EditText editTextNombre,editTextApellido,editTextNum,editTextUser,editTextPass;
     Button buttonDell,buttonConfirm;
-    String strNombre,strApellido,strMail,strUser,strPass, TAG="Test";
-    Boolean boolCamposVacios;
+    String strNombre,strApellido,strNum,strUser,strPass, TAG="Test";
+    Boolean boolCamposVacios,boolNumInt;
     Bundle enviardatos=new Bundle();
     String[] DB= new String[5];
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         editTextNombre= (EditText) findViewById(R.id.editTextNombre);
         editTextApellido= (EditText) findViewById(R.id.editTextApellido);
-        editTextMail= (EditText) findViewById(R.id.editTextMail);
+        editTextNum= (EditText) findViewById(R.id.editTextNum);
         editTextUser= (EditText) findViewById(R.id.editTextUser);
         editTextPass= (EditText) findViewById(R.id.editTextPass);
         buttonDell= (Button) findViewById(R.id.buttonDell);
@@ -72,18 +72,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 strNombre = editTextNombre.getText().toString();
                 strApellido = editTextApellido.getText().toString();
-                strMail = editTextMail.getText().toString();
+                strNum = editTextNum.getText().toString();
                 strUser = editTextUser.getText().toString();
                 strPass = editTextPass.getText().toString();
-                Emptyitems(boolCamposVacios);
+                Emptyitems();
                 if (boolCamposVacios==Boolean.FALSE){
                     DB[0]=strUser;
                     DB[1]=strPass;
                     DB[2]=strNombre;
                     DB[3]=strApellido;
-                    DB[4]=strMail;
+                    DB[4]=strNum;
                     //ShowAlertDatos();
-                    login();
+                    ValideNum();
+                    if (boolNumInt==Boolean.TRUE){
+                        login();
+                    }else {
+                        ShowAlertNumType();
+                    }
                 }else {
                     ShowAlertErrorDatos();
                 }
@@ -153,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "Estoy en onDestroy",Toast.LENGTH_SHORT).show();
     }
 
-
     public void login() {
         Intent i =new Intent(MainActivity.this, LoginForm.class);
         enviardatos.putStringArray("Key",DB);
@@ -164,13 +168,22 @@ public class MainActivity extends AppCompatActivity {
     private void BorrarDatos() {
         editTextNombre.setText("");
         editTextApellido.setText("");
-        editTextMail.setText("");
+        editTextNum.setText("");
         editTextUser.setText("");
         editTextPass.setText("");
     }
 
+    public boolean ValideNum() {
+        try {
+            int d = Integer.parseInt(strNum);
+            this.boolNumInt=Boolean.TRUE;
+        } catch (NumberFormatException nfe) {
+            this.boolNumInt=Boolean.FALSE;
+        }
+        return this.boolNumInt;
+    }
 
-    private boolean Emptyitems(Boolean boolCamposVacios) {
+    private boolean Emptyitems() {
         this.boolCamposVacios=Boolean.FALSE;
         if (Objects.equals(strNombre, "")){
             this.boolCamposVacios =Boolean.TRUE;
@@ -178,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         if (Objects.equals(strApellido, "")) {
             this.boolCamposVacios =Boolean.TRUE;
         }
-        if (Objects.equals(strMail, "")) {
+        if (Objects.equals(strNum, "")) {
             this.boolCamposVacios =Boolean.TRUE;
         }
         if (Objects.equals(strUser, "")) {
@@ -190,6 +203,21 @@ public class MainActivity extends AppCompatActivity {
         return this.boolCamposVacios;
     }
 
+    private void ShowAlertNumType() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("Alerta");
+        builder.setMessage("El numero ingresado no es valido");
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(MainActivity.this, "Por favor ingresar un numero valido",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        AlertDialog alertDialog =builder.create();
+        alertDialog.show();
+    }
 
     private void ShowAlertErrorDatos() {
         if (Objects.equals(strNombre, "")){
@@ -202,10 +230,10 @@ public class MainActivity extends AppCompatActivity {
         }else {
             strApellido = "";
         }
-        if (Objects.equals(strMail, "")) {
-            strMail="Correo ";
+        if (Objects.equals(strNum, "")) {
+            strNum="Numero ";
         }else{
-            strMail = "";
+            strNum = "";
         }
         if (Objects.equals(strUser, "")){
             strUser ="Usuario ";
@@ -219,14 +247,13 @@ public class MainActivity extends AppCompatActivity {
         }
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setTitle("Alerta");
-        builder.setMessage("Han faltado los siguientes datos:\n"+strNombre+strApellido+strMail+strUser+strPass);
+        builder.setMessage("Han faltado los siguientes datos:\n"+strNombre+strApellido+strNum+strUser+strPass);
 
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(MainActivity.this, "Por favor ingresar los datos faltantes",Toast.LENGTH_SHORT).show();
             }
-
         });
 
         AlertDialog alertDialog =builder.create();
